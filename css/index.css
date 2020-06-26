@@ -81,6 +81,10 @@ nav span{
     border-left:3px solid #626262;
 
 }
+
+nav a.home {
+    font-weight: bold;
+}
 /*Title Section Styles*/
 .title-container{
     display:flex;
