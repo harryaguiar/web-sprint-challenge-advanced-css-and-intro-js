@@ -329,19 +329,19 @@ and returns an array with names of artists who painted more than 100 paintings.
 
 For example lotsOfArt(artists); will return ["Amedeo Modigliani", "Rene Magritte", ..."Albrecht Dürer"]*/
 
-function lotsOfArt(array){
-  for (let i = 0; i < array.length; i++) {
+// function lotsOfArt(array){
+//   for (let i = 0; i < array.length; i++) {
     
-    if (array[i].includes(i)) {
-      return name
+//     if (array[i].includes(i)) {
+//       return name
       
-    }
-  }
+//     }
+//   }
 
-  /* Code here */
+//   /* Code here */
 
-}
-console.log(lotsOfArt(artists));
+// }
+// console.log(lotsOfArt(artists));
 
 
 // 🎨🎨 STRETCH 🎨🎨//
@@ -376,11 +376,28 @@ function getHTML(/* Code here */){
 
 /* STRETCH 2: Create a function called `randomize` that takes a data array as an argument and returns a the same array in a randomized order. */
 
-function randomize(/* Code here */){
+function randomize(array){
+  var currentIndex = array.length, temporaryValue, randomIndex;
 
+  while (0 !== currentIndex) {
+
+  
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+
+  return array;
+}
+
+console.log(artists);
     /* Code here */
 
-  }
+  
 
 
  /* STRETCH 3: Use advanced array methods (.map, .reduce, .filer) to refactor your MVP code (create an array of all artists born in the 1900s with .filter, for example) */
