@@ -82,7 +82,7 @@ const artists = [
     {
       "id": 8,
       "name": "Vincent van Dough",
-      "years": "1853 – 1890",
+      "years": "1853 - 1890",
       "genre": "Post-Impressionism",
       "nationality": "Dutch",
       "bio": "Vincent Willem van Gogh (Dutch: [ˈvɪnsɛnt ˈʋɪləm vɑŋ ˈɣɔx] (listen); 30 March 1853 – 29 July 1890) was a Dutch Post-Impressionist painter who is among the most famous and influential figures in the history of Western art. In just over a decade he created about 2,100 artworks, including around 860 oil paintings, most of them in the last two years of his life. They include landscapes, still lifes, portraits and self-portraits, and are characterised by bold colours and dramatic, impulsive and expressive brushwork that contributed to the foundations of modern art. However, he was not commercially successful, and his suicide at 37 followed years of mental illness and poverty.",
@@ -227,38 +227,36 @@ console.log(artists[8].name);
  * it will return `The artist at index 0 is Amedeo Modigliani`.
 */
 function getArtistByIndex(array, index) {
-  for (let i = 0; i < array.length; i++) {
-    // if (array[i].id === index) {
-      return (`The artist at index ${index} is ${name}.`)
+
+      return (`The artist at index ${index} is ${array[index].name}.`)
       
-    // }
-    
   }
 
-
-  }
-  
-  console.log(getArtistByIndex(artists, 1));
+  console.log(getArtistByIndex(artists, 7));
   /**
 
 
 /* Task 4: Create a function called get20s() that takes data as an argument and returns an array with names of artists who were born in and died in 20th century (1900-2000) example born in 1901 and died in 1959 - included / born in 1889 and died in 1925 not included - should return ["Salvador Dali", "Frida Kahlo"]*/
 
-let newArtistsArray = [];
 
-function get20s(arrayParam, stringParam){
-  for (let i = 0; i < arrayParam.length; i++) {
-    if (arrayParam[i].includes(stringParam)){
+
+function get20s(data){
+  const newArtistsArray = [];
+
+  for (let i = 0; i < data.length; i++) {
+    const dob = data[i].years.split(" - ")
             
-      newFlavorArray.push(arrayParam[i])
-  
+  if (dob[0] >= 1900 && dob[1] <= 2000) {
+    newArtistsArray.push(data[i].name)
     }
-}
+  
+    
+  }
+  console.log(newArtistsArray);
+  }
 
-return newArtistsArray;
-}
 
-console.log((artists, "1901"));
+get20s(artists)
 
 
 
@@ -291,7 +289,7 @@ console.log(artists);
  
 
 /**
-/ --------------/ Task 6: Create a function called `addArtist` that can accept an object of information and add it to the artists array. Then, add a 21st artist to the array (you) with custom information!👩‍🎨👨‍🎨
+/ Task 6: Create a function called `addArtist` that can accept an object of information and add it to the artists array. Then, add a 21st artist to the array (you) with custom information!👩‍🎨👨‍🎨
 
 For example, you could add the following information: 
 id: 20,
@@ -303,23 +301,30 @@ bio: Add 1-2 sentences (or use lorem ipsum)
 
 At the end, this function should return the new array with information added"*/
 
+const newArtist = {
+  "id": 20,
+  "name": "Harrison Aguiar",
+  "years": "1990 - 2020",
+  "genre": "Muralism",
+  "nationality": "American",
+  "bio": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+  "wikipedia": "http://en.wikipedia.org/wiki/Harrison_aguiar",
+  "paintings": 110
+}
 
-function addArtist(id, name, years, genre, nationality, bio){
+
+function addArtist(obj){
   
-  return (`
-    "id": ${id},
-    "name": ${name}, 
-    "years": ${years},
-    "genre": ${genre}, 
-    "nationality": ${nationality}
-    "bio": ${bio}`)
+  const newArray = artists.push(obj)
+  
+  return newArray
 
   }
  
-  console.log(addArtist(20, '"Harrison Aguiar"', '"1990 - Present"', '"Cubism"', '"American"', '"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."'));
+  // console.log(addArtist(20, '"Harrison Aguiar"', '"1990 - Present"', '"Cubism"', '"American"', '"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."'));
   
   
-  console.log(addArtist(artists));
+  console.log(addArtist(newArtist));
 
 /* Task 7: Create a function called lotsOfArt() that takes one argument: 
 
@@ -329,19 +334,19 @@ and returns an array with names of artists who painted more than 100 paintings.
 
 For example lotsOfArt(artists); will return ["Amedeo Modigliani", "Rene Magritte", ..."Albrecht Dürer"]*/
 
-// function lotsOfArt(array){
-//   for (let i = 0; i < array.length; i++) {
+function lotsOfArt(array){
+  for (let i = 0; i < array.length; i++) {
     
-//     if (array[i].includes(i)) {
-//       return name
+    if (array[i].includes(i)) {
+      return name
       
-//     }
-//   }
+    }
+  }
 
-//   /* Code here */
+  /* Code here */
 
-// }
-// console.log(lotsOfArt(artists));
+}
+console.log(lotsOfArt(artists));
 
 
 // 🎨🎨 STRETCH 🎨🎨//
