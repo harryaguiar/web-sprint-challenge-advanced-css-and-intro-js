@@ -272,10 +272,11 @@ get20s(artists)
  * Note that sucessfully invoking this function multiple times without refreshing your browser will continuously remove artists from the array until there are none left. If you refresh your browser, the data will reset.  
 */
 function removeArtist(arrayParam, id){
+  let index = array
   for (let i = 0; i < arrayParam.length; i++) {
     if (arrayParam[i].includes(id)){
             
-      newFlavorArray.splice(arrayParam[i])
+      arrayParam.splice(arrayParam[i])
   
     }
 }
@@ -326,7 +327,11 @@ function addArtist(obj){
   
   console.log(addArtist(newArtist));
 
-/* Task 7: Create a function called lotsOfArt() that takes one argument: 
+
+
+
+
+  /* Task 7: Create a function called lotsOfArt() that takes one argument: 
 
     (1) artists array 
 
@@ -335,17 +340,23 @@ and returns an array with names of artists who painted more than 100 paintings.
 For example lotsOfArt(artists); will return ["Amedeo Modigliani", "Rene Magritte", ..."Albrecht Dürer"]*/
 
 function lotsOfArt(array){
+  const newArray = [];
+
   for (let i = 0; i < array.length; i++) {
-    
-    if (array[i].includes(i)) {
-      return name
+    const paintings = array[i].paintings;
+// console.log(paintings);
+    if (paintings > 100) {
+      newArray.push(array[i].name)
       
     }
+
+
   }
 
-  /* Code here */
+  return newArray;
 
 }
+
 console.log(lotsOfArt(artists));
 
 
