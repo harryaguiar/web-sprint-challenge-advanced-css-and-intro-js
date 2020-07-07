@@ -390,25 +390,20 @@ function getHTML(/* Code here */){
 
 /* STRETCH 2: Create a function called `randomize` that takes a data array as an argument and returns a the same array in a randomized order. */
 
+let randomArray = [];
+
 function randomize(array){
-  var currentIndex = array.length, temporaryValue, randomIndex;
-
-  while (0 !== currentIndex) {
-
-  
-    randomIndex = Math.floor(Math.random() * currentIndex);
-    currentIndex -= 1;
-
-
-    temporaryValue = array[currentIndex];
-    array[currentIndex] = array[randomIndex];
-    array[randomIndex] = temporaryValue;
-  }
-
+  for(let i in artists){
+      let randomIndex= Math.floor(Math.random() * artists.length);
+      while(randomArray.includes(artists[randomIndex])){
+        randomIndex= Math.floor(Math.random() * artists.length);
+      }
+      randomArray[i] = artists[randomIndex];
+  } 
   return array;
 }
 
-console.log(artists);
+console.log(randomize(artists));
     /* Code here */
 
   
